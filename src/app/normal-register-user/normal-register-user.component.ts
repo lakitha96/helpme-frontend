@@ -6,6 +6,7 @@ import {NormalRegisterUserClient} from "./normal-register-user-client";
 import {NgForm} from "@angular/forms";
 import {UserRegisterDto} from "../models/user.register.dto";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-normal-register-user',
@@ -13,7 +14,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./normal-register-user.component.css']
 })
 export class NormalRegisterUserComponent implements OnInit {
-  constructor(private registerUserClient: NormalRegisterUserClient, private router: Router) {
+  constructor(private registerUserClient: NormalRegisterUserClient,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   public loginUser(formData: NgForm): void {
@@ -22,7 +25,8 @@ export class NormalRegisterUserComponent implements OnInit {
       (response: AuthTokenResponse) => {
         //todo cache success response and navigate to home screen
         console.log(response)
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['/']);
+        this.authService.login(response);
       },
       (error: HttpErrorResponse) => {
         //todo handle in better way
@@ -39,8 +43,7 @@ export class NormalRegisterUserComponent implements OnInit {
       registerForm.controls.email.value,
       registerForm.controls.password.value)).subscribe(
       (response: AuthTokenResponse) => {
-        console.log(response)
-
+          this.authService.login(response);
       },
       (error: HttpErrorResponse) => {
         //todo handle in better way

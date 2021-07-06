@@ -24,6 +24,8 @@ import {MatListModule} from '@angular/material/list';
 import {HomeComponent} from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
+import { AuthService } from './auth/auth.service';
+import {AuthGuard} from "./auth/auth.guard";
 
 @NgModule({
   declarations: [
@@ -50,21 +52,16 @@ import {MatMenuModule} from '@angular/material/menu';
       [
         {
           path: '',
-          redirectTo: 'login',
-          pathMatch: 'full',
+          component: HomeComponent,
+          canActivate: [AuthGuard],
         },
         {
           path: 'login',
           component: NormalRegisterUserComponent
-        }
-        ,
-        {
-          path: 'dashboard',
-          component: NavComponent
         },
         {
-          path: 'home',
-          component: HomeComponent
+          path: '**',
+          redirectTo: ''
         }
       ]
     ),
@@ -75,7 +72,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatGridListModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 
