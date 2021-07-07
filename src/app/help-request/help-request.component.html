@@ -1,0 +1,59 @@
+<div class="request-help-page">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align:center;">Request Help</mat-card-title>
+    <div style="display:flex; flex-direction: row;">
+      <mat-card-content class="text-field-content">
+        <form #helpRequestForm="ngForm" (ngSubmit)="requestHelp(helpRequestForm)">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose an option</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+<!--              <mat-select [disabled]="disableSelect.value">-->
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Action Needed"
+              required
+              name="Action Needed"
+              ngModel
+              #actionName="ngModel">
+            <mat-icon matSuffix>info</mat-icon>
+            <mat-error
+              *ngIf="actionName.invalid">
+              this field is required
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Description of disaster"
+              required
+              name="description"
+              ngModel
+              #description="ngModel">
+            <mat-error *ngIf="description.invalid">This field is required</mat-error>
+            <mat-icon matSuffix>description</mat-icon>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="primary"
+            class="request-help-button">
+            Request Help
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-card-content class="map-content">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+          <agm-marker [latitude]="lat" [longitude]="lng">
+
+          </agm-marker>
+        </agm-map>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

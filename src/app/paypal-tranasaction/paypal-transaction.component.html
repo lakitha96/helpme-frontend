@@ -1,0 +1,43 @@
+<div class="transaction-page">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align:center;"></mat-card-title>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+             alt="Photo of a Shiba Inu">
+      </div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <div style="display:flex; flex-direction: row;">
+    <mat-card-content class="payment-content">
+      <h5><b>Affected User Description</b></h5>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+      <h5><b>Fund Requested Organization Details</b></h5>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-content class="payment-content">
+      <h5><b>Affected Location</b></h5>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+        <agm-marker [latitude]="lat" [longitude]="lng">
+        </agm-marker>
+      </agm-map>
+    </mat-card-content>
+    </div>
+    <mat-card-content>
+      <p class="raised-amount">1002LKR Raised</p>
+      <mat-card-actions class="action-footer">
+        <div id="paypal-buttons"></div>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -24,8 +24,13 @@ import {MatListModule} from '@angular/material/list';
 import {HomeComponent} from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
-import { AuthService } from './auth/auth.service';
+import {AuthService} from './auth/auth.service';
 import {AuthGuard} from "./auth/auth.guard";
+import {AgmCoreModule} from "@agm/core";
+import {HelpRequestComponent} from './help-request/help-request.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,8 @@ import {AuthGuard} from "./auth/auth.guard";
     NewsFeedComponent,
     NavComponent,
     HomeComponent,
+    HelpRequestComponent,
+    PaypalTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +67,14 @@ import {AuthGuard} from "./auth/auth.guard";
           component: NormalRegisterUserComponent
         },
         {
+          path: 'help-request',
+          component: HelpRequestComponent
+        },
+        {
+          path: 'payment',
+          component: PaypalTransactionComponent
+        },
+        {
           path: '**',
           redirectTo: ''
         }
@@ -70,7 +85,12 @@ import {AuthGuard} from "./auth/auth.guard";
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC-nnj4WeNNlKojwS_7oC5OarJH2PwKlio'
+    }),
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
