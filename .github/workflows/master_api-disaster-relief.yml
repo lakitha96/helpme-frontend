@@ -9,6 +9,9 @@ on:
       - master
   workflow_dispatch:
 
+env:
+  AZURE_WEBAPP_PACKAGE_PATH: './dist/helpme-frontend'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,4 +55,5 @@ jobs:
         app-name: 'api-disaster-relief'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_2f17f2b32a40485487e3934092d4d875 }}
-        package: .
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        
