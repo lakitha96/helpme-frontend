@@ -1,0 +1,51 @@
+agm-map{
+  height: 200px;
+  width: 900px;
+  margin: 0;
+  padding: 100px;
+}
+.payment-content{
+  height: 100%;
+  width: 100%;
+  position: center;
+  display: -moz-inline-box;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.transaction-page {
+  top: 0;
+  margin: 0;
+  padding: -20%;
+  width: 100%;
+  height: 190%;
+  display: block;
+  background-color: #FAFAFA;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+mat-card {
+  width: 50%;
+  margin: 3% auto;
+  border-radius: 8px;
+}
+mat-form-field, mat-checkbox {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+mat-card-content {
+  margin-top: 10px;
+}
+
+.login-button {
+  margin-top: 20px;
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+}
+

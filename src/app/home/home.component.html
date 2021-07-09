@@ -1,5 +1,6 @@
+<h2>Help Requests</h2>
 <div class="grid-container">
-  <mat-grid-list cols="4" rowHeight="300px">
+  <mat-grid-list cols="4" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="example-card">
         <mat-card-header>
@@ -17,9 +18,21 @@
             bred for hunting.
           </p>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Donate</button>
-        </mat-card-actions>
+        <mat-card class="donation-info">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image" >
+              <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            </div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Fund request raised</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="raised-amount">1002LKR Raised</p>
+            <mat-card-actions class="action-footer">
+              <button mat-raised-button color="primary" class="donate-button">Donate</button>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
