@@ -31,6 +31,7 @@ import {HelpRequestComponent} from './help-request/help-request.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transacti
       apiKey: 'AIzaSyC-nnj4WeNNlKojwS_7oC5OarJH2PwKlio'
     }),
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    FlexLayoutModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

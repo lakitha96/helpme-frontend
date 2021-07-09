@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AuthService} from "../auth/auth.service";
+import {MenuItem} from "../models/menu.item";
 
 @Component({
   selector: 'app-nav',
@@ -20,9 +21,28 @@ import {AuthService} from "../auth/auth.service";
 export class NavComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
+  menuItems: Array<MenuItem> = [];
 
   constructor(public authService: AuthService) {
     this.isLoggedIn$ = new Observable();
+    this.menuItems = [
+      {
+        label: 'logout',
+        icon: 'login',
+        routing: 'login',
+        showOnMobile: true,
+        showOnTablet: true,
+        showOnDesktop: true
+      },
+      {
+        label: 'Request Help',
+        icon: 'help',
+        routing: '/help-request',
+        showOnMobile: true,
+        showOnTablet: true,
+        showOnDesktop: false
+      }
+    ];
   }
 
   onLogout() {
@@ -32,4 +52,5 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn;
   }
+
 }
