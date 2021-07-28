@@ -1,7 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
+
+import { NouisliderModule } from 'ng2-nouislider';
+import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -33,6 +39,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +52,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     HomeComponent,
     HelpRequestComponent,
     PaypalTransactionComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,31 +68,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      [
-        {
-          path: '',
-          component: HomeComponent,
-          canActivate: [AuthGuard],
-        },
-        {
-          path: 'login',
-          component: NormalRegisterUserComponent
-        },
-        {
-          path: 'help-request',
-          component: HelpRequestComponent
-        },
-        {
-          path: 'payment',
-          component: PaypalTransactionComponent
-        },
-        {
-          path: '**',
-          redirectTo: ''
-        }
-      ]
-    ),
+    RouterModule,
     LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -92,7 +80,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     }),
     MatOptionModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgbModule,
+    AppRoutingModule,
+    CommonModule,
+    NouisliderModule,
+    JwBootstrapSwitchNg2Module
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
