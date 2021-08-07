@@ -12,7 +12,7 @@ import {HomeComponent} from './home/home.component';
 
 const routes: Routes =[
   { path: '', redirectTo: 'welcomeToHelpMe', pathMatch: 'full' },
-  { path: 'welcomeToHelpMe',             component: LandingComponent },
+  { path: 'welcomeToHelpMe',             component: PaypalTransactionComponent },
   { path: 'login',             component: NormalRegisterUserComponent },
   { path: 'help-request',             component: HelpRequestComponent },
   { path: 'payment',             component: PaypalTransactionComponent },

@@ -1,4 +1,5 @@
 <div class="request-help-page">
+  <div class="filter"></div>
   <mat-card class="mat-elevation-z12">
     <mat-card-title style="text-align:center;">Request Help</mat-card-title>
     <div style="display:flex; flex-direction: row;">
@@ -39,12 +40,15 @@
             <mat-error *ngIf="description.invalid">This field is required</mat-error>
             <mat-icon matSuffix>description</mat-icon>
           </mat-form-field>
-          <button
+          <div class="request-help-button">
+            <button type="button" class="btn btn-danger btn-round">Request Help</button>
+          </div>
+          <!-- <button
             mat-raised-button
             color="primary"
             class="request-help-button">
             Request Help
-          </button>
+          </button> -->
         </form>
       </mat-card-content>
       <mat-card-content class="map-content">
