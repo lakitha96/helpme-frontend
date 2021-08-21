@@ -4,28 +4,35 @@ import {Router} from "@angular/router";
 import {AuthTokenResponse} from "../models/auth.token.response";
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(true);
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  private _loggedUser: boolean;
 
   constructor(private router: Router) {
+    this._loggedUser = false;
   }
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
-  login(authTokenResponse: AuthTokenResponse) {
-    this.loggedIn.next(true);
-    this.router.navigate(['/']);
-    if (authTokenResponse.access_token != null) {
+  get loggedUser() {
+    return this._loggedUser;
+  }
 
+  login(authTokenResponse: AuthTokenResponse) {
+    if (authTokenResponse.access_token != null) {
+      this.loggedIn.next(true);
+      this._loggedUser = true;
+      this.router.navigate(['/feed']);
     }
   }
 
   logout() {
+    this._loggedUser = false;
     this.loggedIn.next(false);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user-login']);
   }
 }

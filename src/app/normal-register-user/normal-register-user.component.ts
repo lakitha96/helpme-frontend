@@ -14,6 +14,7 @@ import {AuthService} from "../auth/auth.service";
   styleUrls: ['./normal-register-user.component.css']
 })
 export class NormalRegisterUserComponent implements OnInit {
+
   constructor(private registerUserClient: NormalRegisterUserClient,
               private router: Router,
               private authService: AuthService) {
@@ -25,7 +26,7 @@ export class NormalRegisterUserComponent implements OnInit {
       (response: AuthTokenResponse) => {
         //todo cache success response and navigate to home screen
         console.log(response)
-        this.router.navigate(['/']);
+        this.router.navigate(['/feed']);
         this.authService.login(response);
       },
       (error: HttpErrorResponse) => {

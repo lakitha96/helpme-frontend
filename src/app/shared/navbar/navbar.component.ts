@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {map, take} from "rxjs/operators";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
     selector: 'app-navbar',
@@ -9,14 +11,17 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    isLoggedIn$: boolean;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element : ElementRef, private authService: AuthService) {
         this.sidebarVisible = false;
+        this.isLoggedIn$ = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        this.isLoggedIn$ = this.authService.loggedUser;
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -71,4 +76,22 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    // login() {
+    //   return this.authService.isLoggedIn
+    //     .pipe(
+    //       take(1),
+    //       map((isLoggedIn: boolean) => {
+    //         if (!isLoggedIn) {
+    //           this.isLoggedIn$ = false;
+    //           return false;
+    //         }
+    //         this.isLoggedIn$ = true;
+    //         return true;
+    //       }))
+    // }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

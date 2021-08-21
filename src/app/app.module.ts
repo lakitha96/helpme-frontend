@@ -41,6 +41,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import {LandingComponent} from "./landing/landing.component";
+import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { FooterComponent } from './shared/footer/footer.component';
     HelpRequestComponent,
     PaypalTransactionComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LandingComponent,
+    OrganizationRegisterComponent
   ],
   imports: [
     BrowserModule,
