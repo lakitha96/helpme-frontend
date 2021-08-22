@@ -11,11 +11,19 @@
         <div class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a [routerLink]="['/user-login']" *ngIf="!isLoggedIn$" class="nav-link"><i class="nc-icon nc-layout-11"></i>User SignIn/SignUp</a>
-                <a [routerLink]="['/organization-login']" class="nav-link"><i class="nc-icon nc-layout-11"></i>Organization</a>
-                <a (click)="onLogout()" *ngIf="isLoggedIn$" class="nav-link">Logout</a>
+                <a [routerLink]="['/user-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>User SignIn/SignUp</a>
               </li>
             </ul>
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <a [routerLink]="['/organization-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Organization</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a (click)="onLogout()" *ngIf="isAuthorized()" class="nav-link">Logout</a>
+            </li>
+          </ul>
         </div>
     </div>
 </nav>

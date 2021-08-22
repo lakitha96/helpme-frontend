@@ -31,7 +31,6 @@ import {HomeComponent} from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {AuthService} from './auth/auth.service';
-import {AuthGuard} from "./auth/auth.guard";
 import {AgmCoreModule} from "@agm/core";
 import {HelpRequestComponent} from './help-request/help-request.component';
 import {MatOptionModule} from "@angular/material/core";
@@ -91,7 +90,7 @@ import { OrganizationRegisterComponent } from './organization-register/organizat
     NouisliderModule,
     JwBootstrapSwitchNg2Module
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 

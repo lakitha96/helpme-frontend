@@ -1,43 +1,43 @@
-<mat-toolbar fxLayout="row" color="primary">
-  <span fxFlex routerLink='/'>HelpMe | Disaster Relief & Fund Raise</span>
-  <button mat-button routerLink='{{item.routing}}' *ngFor="let item of menuItems"
-          [fxShow]="item.showOnDesktop"
-          [fxShow.xs]="item.showOnMobile"
-          [fxShow.sm]="item.showOnTablet">
-    <mat-icon class="mr">{{item.icon}}</mat-icon>
-    {{item.label}}
-  </button>
-  <ng-container>
-    <button mat-icon-button [matMenuTriggerFor]="dropMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #dropMenu="matMenu">
-      <ng-container *ngFor="let item of menuItems">
-        <div [fxShow]="!item.showOnDesktop"
-             [fxShow.sm]="!item.showOnTablet"
-             [fxShow.xs]="!item.showOnMobile">
-          <button mat-menu-item routerLink='{{item.routing}}'>
-            <mat-icon class="mr">{{item.icon}}</mat-icon>
-            {{item.label}}
-          </button>
-          <mat-divider></mat-divider>
-        </div>
-      </ng-container>
-    </mat-menu>
-  </ng-container>
-</mat-toolbar>
-
-
-<!--<mat-sidenav-container>-->
-
-<!--<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">-->
-<!--  <span routerLink='/'>-->
-<!--    <img src="https://research-disaster.s3.ap-south-1.amazonaws.com/web-app/icons/coin.png" class="angular-logo">-->
-<!--    HelpMe | Disaster Relief & Fund Raise-->
-<!--  </span>-->
-<!--  <span class="fill-remaining-space"></span>-->
-<!--  <button mat-button routerLink='/help-request' routerLinkActive="Active">Request Help</button>-->
-<!--  <button mat-button>Track Your Donate</button>-->
-<!--  <button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>-->
+<!--<mat-toolbar fxLayout="row" color="primary">-->
+<!--  <span fxFlex routerLink='/'>HelpMe | Disaster Relief & Fund Raise</span>-->
+<!--  <button mat-button routerLink='{{item.routing}}' *ngFor="let item of menuItems"-->
+<!--          [fxShow]="item.showOnDesktop"-->
+<!--          [fxShow.xs]="item.showOnMobile"-->
+<!--          [fxShow.sm]="item.showOnTablet">-->
+<!--    <mat-icon class="mr">{{item.icon}}</mat-icon>-->
+<!--    {{item.label}}-->
+<!--  </button>-->
+<!--  <ng-container>-->
+<!--    <button mat-icon-button [matMenuTriggerFor]="dropMenu">-->
+<!--      <mat-icon>more_vert</mat-icon>-->
+<!--    </button>-->
+<!--    <mat-menu #dropMenu="matMenu">-->
+<!--      <ng-container *ngFor="let item of menuItems">-->
+<!--        <div [fxShow]="!item.showOnDesktop"-->
+<!--             [fxShow.sm]="!item.showOnTablet"-->
+<!--             [fxShow.xs]="!item.showOnMobile">-->
+<!--          <button mat-menu-item routerLink='{{item.routing}}'>-->
+<!--            <mat-icon class="mr">{{item.icon}}</mat-icon>-->
+<!--            {{item.label}}-->
+<!--          </button>-->
+<!--          <mat-divider></mat-divider>-->
+<!--        </div>-->
+<!--      </ng-container>-->
+<!--    </mat-menu>-->
+<!--  </ng-container>-->
 <!--</mat-toolbar>-->
-<!--</mat-sidenav-container>-->
+
+
+<!--&lt;!&ndash;<mat-sidenav-container>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">&ndash;&gt;-->
+<!--&lt;!&ndash;  <span routerLink='/'>&ndash;&gt;-->
+<!--&lt;!&ndash;    <img src="https://research-disaster.s3.ap-south-1.amazonaws.com/web-app/icons/coin.png" class="angular-logo">&ndash;&gt;-->
+<!--&lt;!&ndash;    HelpMe | Disaster Relief & Fund Raise&ndash;&gt;-->
+<!--&lt;!&ndash;  </span>&ndash;&gt;-->
+<!--&lt;!&ndash;  <span class="fill-remaining-space"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button mat-button routerLink='/help-request' routerLinkActive="Active">Request Help</button>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button mat-button>Track Your Donate</button>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</mat-toolbar>&ndash;&gt;-->
+<!--&lt;!&ndash;</mat-sidenav-container>&ndash;&gt;-->

@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   menuItems: Array<MenuItem> = [];
 
-  constructor(public authService: AuthService) {
+  constructor() {
     this.isLoggedIn$ = new Observable();
     this.menuItems = [
       {
@@ -45,12 +45,15 @@ export class NavComponent implements OnInit {
     ];
   }
 
-  onLogout() {
-    this.authService.logout();
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
-  }
+  // onLogout() {
+  //   this.authService.logout();
+  // }
+  //
+  // ngOnInit(): void {
+  //   this.isLoggedIn$ = this.authService.isLoggedIn;
+  // }
 
 }

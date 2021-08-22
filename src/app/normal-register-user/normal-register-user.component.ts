@@ -23,11 +23,11 @@ export class NormalRegisterUserComponent implements OnInit {
   public loginUser(formData: NgForm): void {
     this.registerUserClient.loginNormalUser(new UserLoginDto(formData.controls.email.value,
       formData.controls.password.value)).subscribe(
-      (response: AuthTokenResponse) => {
+      (response: any) => {
         //todo cache success response and navigate to home screen
         console.log(response)
         this.router.navigate(['/feed']);
-        this.authService.login(response);
+        this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
       },
       (error: HttpErrorResponse) => {
         //todo handle in better way

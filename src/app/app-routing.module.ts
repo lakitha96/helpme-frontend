@@ -8,6 +8,7 @@ import {HelpRequestComponent} from './help-request/help-request.component';
 import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
 import {HomeComponent} from './home/home.component';
 import {OrganizationRegisterComponent} from "./organization-register/organization-register.component";
+import {HasRoleGuard} from "./has-role.guard";
 
 const routes: Routes = [
   {path: '', redirectTo: 'welcomeToHelpMe', pathMatch: 'full'},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'user-login', component: NormalRegisterUserComponent},
   {path: 'organization-login', component: OrganizationRegisterComponent},
   {path: 'help-request', component: HelpRequestComponent},
-  {path: 'payment', component: PaypalTransactionComponent},
+  {path: 'payment', component: PaypalTransactionComponent, canActivate: [HasRoleGuard],  data: {role: 'ROLE_ADMIN',}},
   {path: 'feed', component: HomeComponent},
   {path: '**', redirectTo: 'welcomeToHelpMe', pathMatch: 'full'}
 ];

@@ -1,38 +1,46 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
 import {AuthTokenResponse} from "../models/auth.token.response";
+import {UserToken} from "../models/user.token";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
-  private _loggedUser: boolean;
+  public accessToken!: string;
+  public userTokenInfo!: UserToken;
 
   constructor(private router: Router) {
-    this._loggedUser = false;
   }
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
-
-  get loggedUser() {
-    return this._loggedUser;
+  isAuthorized() {
+    return !!this.accessToken;
   }
 
   login(authTokenResponse: AuthTokenResponse) {
-    if (authTokenResponse.access_token != null) {
-      this.loggedIn.next(true);
-      this._loggedUser = true;
-      this.router.navigate(['/feed']);
-    }
+    this.accessToken = authTokenResponse.access_token;
+    localStorage.setItem('access_token', authTokenResponse.access_token);
+    this.router.navigate(['/feed']);
+    this.userTokenInfo = this.getTokenInfo(authTokenResponse.access_token);
   }
 
   logout() {
-    this._loggedUser = false;
-    this.loggedIn.next(false);
-    this.router.navigate(['/user-login']);
+    this.accessToken = '';
+    this.router.navigate(['/login']);
+    localStorage.clear();
+  }
+
+  private getTokenInfo(token: string): UserToken {
+    this.userTokenInfo = JSON.parse(atob(token.split('.')[1])) as UserToken;
+    return this.userTokenInfo;
+  }
+
+  getRole() {
+    if (<string>localStorage.getItem("access_token") != null) {
+      this.getTokenInfo(<string>localStorage.getItem("access_token"))
+      return this.userTokenInfo.authorities[0];
+    }
+    return null;
   }
 }
