@@ -1,6 +1,6 @@
 import {UserRegisterDto} from "./user.register.dto";
 
-class OrganizationRegisterDto{
+export class OrganizationRegisterDto{
   private organization_name: string;
   private location: string;
   private image_url: string;

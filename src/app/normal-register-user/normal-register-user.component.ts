@@ -43,8 +43,8 @@ export class NormalRegisterUserComponent implements OnInit {
     this.registerUserClient.registerNormalUser(new UserRegisterDto(registerForm.controls.username.value,
       registerForm.controls.email.value,
       registerForm.controls.password.value)).subscribe(
-      (response: AuthTokenResponse) => {
-          this.authService.login(response);
+      (response: any) => {
+          this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
       },
       (error: HttpErrorResponse) => {
         //todo handle in better way

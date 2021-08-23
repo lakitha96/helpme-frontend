@@ -4,6 +4,7 @@ import {AuthTokenResponse} from "../models/auth.token.response";
 import {HttpClient} from "@angular/common/http";
 import {Component, Injectable} from "@angular/core";
 import {UserRegisterDto} from "../models/user.register.dto";
+import {OrganizationRegisterDto} from "../models/organization.register.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class NormalRegisterUserClient {
 
   public loginNormalUser(user: UserLoginDto): Observable<AuthTokenResponse> {
     return this.http.post<AuthTokenResponse>(`${this.apiServiceUrl}/users/login`, user)
+  }
+
+  public registerOrganization(organization: OrganizationRegisterDto): Observable<AuthTokenResponse> {
+    return this.http.post<AuthTokenResponse>(`${this.apiServiceUrl}/organization/register`, organization)
   }
 }
