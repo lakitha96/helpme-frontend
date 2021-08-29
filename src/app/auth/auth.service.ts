@@ -8,10 +8,11 @@ import {UserToken} from "../models/user.token";
   providedIn: 'root'
 })
 export class AuthService {
-  public accessToken!: string;
+  public accessToken!: string | null;
   public userTokenInfo!: UserToken;
 
   constructor(private router: Router) {
+    this.accessToken = localStorage.getItem("access_token");
   }
 
   isAuthorized() {

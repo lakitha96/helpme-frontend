@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg fixed-top navbar-background" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand">HelpMe | Disaster Relief & Fund Raise</a>
+            <a style="color:white" class="navbar-brand">HelpMe | Disaster Relief & Fund Raise</a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -11,17 +11,22 @@
         <div class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a [routerLink]="['/user-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>User SignIn/SignUp</a>
+                <a style="color:white" [routerLink]="['/user-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>User Login</a>
               </li>
             </ul>
           <ul class="navbar-nav ml-auto">
-            <li>
-              <a [routerLink]="['/organization-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Organization</a>
+            <li class="nav-item">
+              <a style="color:white" [routerLink]="['/organization-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Organization LoginZ</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a (click)="onLogout()" *ngIf="isAuthorized()" class="nav-link">Logout</a>
+              <a style="color:white" [routerLink]="['/help-request']" *ngIf="isAuthorized() && isUserRole()" class="nav-link">Request Help</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a style="color:white" (click)="onLogout()" *ngIf="isAuthorized()" class="nav-link">Logout</a>
             </li>
           </ul>
         </div>

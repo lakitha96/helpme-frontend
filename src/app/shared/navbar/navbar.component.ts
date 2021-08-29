@@ -100,7 +100,7 @@ export class NavbarComponent implements OnInit {
     return this.authService.isAuthorized();
   }
 
-  getRoleInfo() {
-    return this.authService.getRole();
+  isUserRole() {
+    return this.authService.getRole() === 'ROLE_USER';
   }
 }
