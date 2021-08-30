@@ -33,8 +33,11 @@ export class HelpRequestComponent extends MapsService implements OnInit {
   }
   public requestHelp(requestHelpForm: NgForm) {
     this.helpRequestClient.saveHelpRequest(new HelpRequestDto(this.selectedHelpUuid,
-      requestHelpForm.controls.actionName.value, requestHelpForm.controls.contactNumber.value,
-      requestHelpForm.controls.description.value, this.lat, this.lng)).subscribe((response: any) => {
+      requestHelpForm.controls.actionName.value,
+      requestHelpForm.controls.description.value,
+      requestHelpForm.controls.contactNumber.value,
+      this.lat,
+      this.lng)).subscribe((response: any) => {
         alert("Help request successfully saved.");
         this.router.navigate(['/feed']);
       },

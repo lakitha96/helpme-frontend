@@ -2,25 +2,20 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiCommonResponse} from "../models/api.common.response";
-import {HelpRequestDto} from "../models/help.request.dto";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HelpRequestClient {
+export class HomeFeedClient {
   private apiServiceUrl = 'http://localhost:8081/api';
+
 
   constructor(private http: HttpClient) {
   }
 
-  public getHelpTypes(): Observable<any> {
+  public getAllPendingHelpRequests(): Observable<any> {
     const headers = this.getCustomHeaders();
-    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/type`, {headers});
-  }
-
-  public saveHelpRequest(helpRequestDTO: HelpRequestDto): Observable<any> {
-    const headers = this.getCustomHeaders();
-    return this.http.post<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request`, helpRequestDTO, {headers});
+    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request/pending`, {headers});
   }
 
   public getCustomHeaders(): any {

@@ -21,7 +21,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
-import {NewsFeedComponent} from "./news-feed/news-feed.component";
 import {NavComponent} from './nav/nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -48,7 +47,6 @@ import { OrganizationRegisterComponent } from './organization-register/organizat
   declarations: [
     AppComponent,
     NormalRegisterUserComponent,
-    NewsFeedComponent,
     NavComponent,
     HomeComponent,
     HelpRequestComponent,
