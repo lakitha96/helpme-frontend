@@ -4,34 +4,40 @@
     <mat-grid-tile *ngFor="let card of pendingHelpRequests">
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image" >
-            <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <div mat-card-avatar class="example-header-image">
+            <ngx-avatar name={{card.userScreen.userName}} value="28%" bgColor="#1976d2" fgColor="#fafafa" size=40
+                        [round]="true"></ngx-avatar>
           </div>
           <mat-card-title>{{card.userScreen.userName}}</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src={{card.helpRequestScreen.affectedAreaImageUrl}} alt="Photo of a Shiba Inu">
         <mat-card-content>
+          <h6><b>{{card.helpRequestScreen.name}}</b></h6>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            {{card.helpRequestScreen.description}}
           </p>
         </mat-card-content>
-        <mat-card class="donation-info">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image" >
-              <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            </div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Fund request raised</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="raised-amount">1002LKR Raised</p>
-            <mat-card-actions class="action-footer">
-              <button mat-raised-button color="primary" class="donate-button">Donate</button>
-            </mat-card-actions>
-          </mat-card-content>
+        <mat-card class="donation-info" *ngIf="isUser()">
+          <div>
+            <mat-divider></mat-divider>
+            <br>
+            <h6>Fund request raised by</h6>
+            <h4>Shiba Inu</h4>
+            <h6>Organization</h6>
+            <br>
+            <!--          <mat-card-header>-->
+            <!--            <div mat-card-avatar class="example-header-image" >-->
+            <!--&lt;!&ndash;              <img mat-card-avatar src="https://image.flaticon.com/icons/png/512/2891/2891526.png" alt="Photo of a Shiba Inu">&ndash;&gt;-->
+            <!--            </div>-->
+            <!--          </mat-card-header>-->
+            <mat-card-content>
+              <mat-card-subtitle class="raised-amount">Current donation - 1002LKR</mat-card-subtitle>
+              <mat-card-actions class="action-footer">
+                <button (click)="onSubmit(card)" mat-raised-button color="primary" class="donate-button">Donate
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </div>
         </mat-card>
       </mat-card>
     </mat-grid-tile>

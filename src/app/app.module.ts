@@ -41,6 +41,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import {LandingComponent} from "./landing/landing.component";
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
+import {AvatarModule} from "ngx-avatar";
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { OrganizationRegisterComponent } from './organization-register/organizat
     AppRoutingModule,
     CommonModule,
     NouisliderModule,
-    JwBootstrapSwitchNg2Module
+    JwBootstrapSwitchNg2Module,
+    AvatarModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -6,6 +6,8 @@ import {HomeFeedClient} from "./home.feed.client";
 import {HelpTypeDto} from "../models/help.type.dto";
 import {HelpRequestDto} from "../models/help.request.dto";
 import {PendingHelpRequestDto} from "../models/feed/pending.help.request.dto";
+import {AuthService} from "../auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,10 @@ export class HomeComponent implements OnInit{
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private feedClient: HomeFeedClient) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private feedClient: HomeFeedClient,
+              private authService: AuthService,
+              private router: Router) {}
 
   public loadAllPendingHelpRequests() {
     console.log("loadAllPendingHelpRequests");
@@ -34,5 +39,17 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadAllPendingHelpRequests();
+  }
+
+  isOrganization() {
+    return this.authService.isAuthorized() && this.authService.getRole() === 'ROLE_ORGANIZATION';
+  }
+
+  isUser() {
+    return this.authService.isAuthorized() && this.authService.getRole() === 'ROLE_USER';
+  }
+
+  onSubmit(helpRequestDto: PendingHelpRequestDto) {
+      this.router.navigate(['/payment', helpRequestDto.helpRequestScreen.uuid]);
   }
 }

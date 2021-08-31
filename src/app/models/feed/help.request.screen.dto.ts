@@ -1,12 +1,12 @@
 export class HelpRequestScreenDto{
-  private uuid: string;
-  private helpType: string;
-  private affectedAreaImageUrl: string;
-  private description: string;
-  private status: string;
-  private locLng: string;
-  private locLat: string;
-  private name: string;
+  public uuid: string;
+  public helpType: string;
+  public affectedAreaImageUrl: string;
+  public description: string;
+  public status: string;
+  public locLng: string;
+  public locLat: string;
+  public name: string;
 
 
   constructor(uuid: string, helpType: string, affectedAreaImageUrl: string, description: string, status: string, locLng: string, locLat: string, name: string) {

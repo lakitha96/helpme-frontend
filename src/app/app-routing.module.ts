@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'user-login', component: NormalRegisterUserComponent},
   {path: 'organization-login', component: OrganizationRegisterComponent},
   {path: 'help-request', component: HelpRequestComponent, canActivate: [HasRoleGuard],  data: {role: 'ROLE_USER'}},
-  {path: 'payment', component: PaypalTransactionComponent, canActivate: [HasRoleGuard],  data: {role: 'ROLE_USER'}},
+  {path: 'payment/:uuid', component: PaypalTransactionComponent, canActivate: [HasRoleGuard],  data: {role: 'ROLE_USER'}},
   {path: 'feed', component: HomeComponent, canActivate: [HasRoleGuard],  data: {role: ['ROLE_USER', 'ROLE_ORGANIZATION']}},
   {path: '**', redirectTo: 'welcomeToHelpMe', pathMatch: 'full'}
 ];
