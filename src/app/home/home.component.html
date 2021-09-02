@@ -22,8 +22,8 @@
             <mat-divider></mat-divider>
             <br>
             <h6>Fund request raised by</h6>
-            <h4>Shiba Inu</h4>
-            <h6>Organization</h6>
+            <h4>{{card.organizationScreen.name}}</h4>
+            <h6>{{card.organizationScreen.location}}</h6>
             <br>
             <!--          <mat-card-header>-->
             <!--            <div mat-card-avatar class="example-header-image" >-->
@@ -31,7 +31,7 @@
             <!--            </div>-->
             <!--          </mat-card-header>-->
             <mat-card-content>
-              <mat-card-subtitle class="raised-amount">Current donation - 1002LKR</mat-card-subtitle>
+              <mat-card-subtitle class="raised-amount">Current donations - {{card.fundRequestScreen.fundRaisedAmount}} USD</mat-card-subtitle>
               <mat-card-actions class="action-footer">
                 <button (click)="onSubmit(card)" mat-raised-button color="primary" class="donate-button">Donate
                 </button>

@@ -2,29 +2,30 @@
   <mat-card class="mat-elevation-z13">
     <mat-card-title style="text-align:center;"></mat-card-title>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image">
-        <img mat-card-avatar src="./assets/img/homePage2.jpg"
-             alt="Photo of a Shiba Inu">
-      </div>
-      <mat-card-title>Donate Now</mat-card-title>
-      <mat-card-subtitle>Donate for Covid Pandemic</mat-card-subtitle>
+<!--      <div mat-card-avatar class="example-header-image">-->
+<!--        <img mat-card-avatar src="./assets/img/homePage2.jpg"-->
+<!--             alt="Photo of a Shiba Inu">-->
+<!--      </div>-->
+      <mat-card-title>{{helpRequestDto.helpRequestScreen.name}}</mat-card-title>
+      <mat-card-subtitle>{{helpRequestDto.helpRequestScreen.description}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="./assets/img/homePage2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{helpRequestDto.helpRequestScreen.affectedAreaImageUrl}}" alt="Photo of a Shiba Inu">
     <div style="display:flex; flex-direction: row;">
     <mat-card-content class="payment-content">
       <h5><b>Affected User Description</b></h5>
       <p>
-        Lakitha Prabudh Harshitha
+        {{helpRequestDto.userScreen.userName}}
       </p>
       <p>
-        663/1, Bambalapitiya, Colombo.
-      </p><br>
-      <h5><b>Fund Requested Organization Details</b></h5>
+        663/1, Bambalapitiya, Colombo. //todo change
+      </p>
+      <br>
+      <h5><b>Fund Requested Initialized Organization Details</b></h5>
       <p>
-        Green Labs (pvt) LTD
+        {{helpRequestDto.organizationScreen.name}}
       </p>
       <p>
-        Colombo, Sri Lanka.
+        {{helpRequestDto.organizationScreen.location}}
       </p>
     </mat-card-content>
     <mat-card-content class="payment-content">
@@ -36,10 +37,8 @@
     </mat-card-content>
     </div>
     <mat-card-content class="payment-content">
-      <p class="raised-amount">1002LKR Raised</p>
-      <mat-card-actions class="action-footer">
-        <div id="paypal-buttons"></div>
-      </mat-card-actions>
+      <h6 class="raised-amount">{{helpRequestDto.fundRequestScreen.fundRaisedAmount}} amount raised.</h6>
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
     </mat-card-content>
   </mat-card>
 </div>

@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit{
 
   public loadAllPendingHelpRequests() {
     console.log("loadAllPendingHelpRequests");
-    this.feedClient.getAllPendingHelpRequests().subscribe((response: any) => {
+    this.feedClient.getAllOngoingHelpRequests().subscribe((response: any) => {
       this.pendingHelpRequests = response.data;
     }), (error: HttpErrorResponse) => {
       alert(error.message);

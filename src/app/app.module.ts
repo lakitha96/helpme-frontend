@@ -42,6 +42,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {LandingComponent} from "./landing/landing.component";
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 import {AvatarModule} from "ngx-avatar";
+import {NgxPayPalModule} from "ngx-paypal";
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import {AvatarModule} from "ngx-avatar";
     CommonModule,
     NouisliderModule,
     JwBootstrapSwitchNg2Module,
-    AvatarModule
+    AvatarModule,
+    NgxPayPalModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

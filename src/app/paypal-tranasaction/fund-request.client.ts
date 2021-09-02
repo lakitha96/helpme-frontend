@@ -1,21 +1,17 @@
-import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiCommonResponse} from "../models/api.common.response";
+import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeFeedClient {
+export class FundRequestClient {
+
   private apiServiceUrl = 'http://localhost:8081/api';
 
 
   constructor(private http: HttpClient) {
-  }
-
-  public getAllOngoingHelpRequests(): Observable<any> {
-    const headers = this.getCustomHeaders();
-    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request/ongoing`, {headers});
   }
 
   public getOngoingHelpRequestByUuid(uuid: string): Observable<any> {
