@@ -1,0 +1,10 @@
+.custom-table {
+  width: 100%;
+  position: center;
+}
+.login-button {
+  display: block;
+  width: 30%;
+  background-color: #ee5f26;
+  border-radius: 30px;
+}

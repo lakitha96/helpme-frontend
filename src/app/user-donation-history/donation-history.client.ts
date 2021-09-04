@@ -2,12 +2,11 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiCommonResponse} from "../models/api.common.response";
 import {Injectable} from "@angular/core";
-import {DonateRequestDto} from "../models/payment/donate.request.dto";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FundRequestClient {
+export class DonationHistoryClient {
 
   private apiServiceUrl = 'http://localhost:8081/api';
 
@@ -15,14 +14,9 @@ export class FundRequestClient {
   constructor(private http: HttpClient) {
   }
 
-  public getOngoingHelpRequestByUuid(uuid: string): Observable<any> {
+  public getDonationHistory(): Observable<any> {
     const headers = this.getCustomHeaders();
-    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request/ongoing/` + uuid, {headers});
-  }
-
-  public saveDonation(donationRequest: DonateRequestDto): Observable<any> {
-    const headers = this.getCustomHeaders();
-    return this.http.post<ApiCommonResponse>(`${this.apiServiceUrl}/fund-requests/donation`, donationRequest, {headers});
+    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/fund-requests/donation/history`, {headers});
   }
 
   public getCustomHeaders(): any {

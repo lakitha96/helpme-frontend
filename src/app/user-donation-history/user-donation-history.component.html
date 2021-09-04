@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="dataSource" class="custom-table">
+
+    <ng-container matColumnDef="transactionId">
+      <mat-header-cell *matHeaderCellDef> Transaction Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.transactionId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="paymentName">
+      <mat-header-cell *matHeaderCellDef> Donor Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.paymentName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="transactionStatus">
+      <mat-header-cell *matHeaderCellDef> Transaction Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.transactionStatus}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="donateAmount">
+      <mat-header-cell *matHeaderCellDef> Donate Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element" >
+        <button mat-raised-button
+                (click)="viewHelpRequest(element.helpRequestUuid)"
+                color="primary"
+                class="login-button" >View</button>
+      </mat-cell>
+    </ng-container>
+
+    <!--    <div *ngIf="h === 'action'">-->
+    <!--      <td mat-cell *matCellDef="let row">-->
+    <!--        <button mat-raised-button-->
+    <!--                (click)="viewHelpRequest(row[i].donationHistoryDto.fundRequestUuid)"-->
+    <!--                color="primary"-->
+    <!--                class="login-button" >View</button>-->
+    <!--      </td>-->
+    <!--    </div>-->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+
+
+<!--  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+</table>

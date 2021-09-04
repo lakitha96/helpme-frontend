@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {MapsService} from "../maps.service";
 import {ActivatedRoute} from "@angular/router";
 import {FundRequestClient} from "./fund-request.client";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PendingHelpRequestDto} from "../models/feed/pending.help.request.dto";
 import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {DonateRequestDto} from "../models/payment/donate.request.dto";
+import {CurrencyPipe} from "@angular/common";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-paypal-tranasaction',
@@ -16,15 +19,38 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
   helpRequestUuid: any;
   declare public helpRequestDto: PendingHelpRequestDto;
   private showSuccess: boolean = false;
+  public formattedAmount: any;
+  private realAmount: any;
 
-  constructor(private route: ActivatedRoute, private fundRequestClient: FundRequestClient) {
+  constructor(private route: ActivatedRoute,
+              private fundRequestClient: FundRequestClient,
+              private currencyPipe: CurrencyPipe) {
     super();
     this.helpRequestUuid = this.route.snapshot.paramMap.get('uuid');
     this.getOngoingHelpRequestByUuid();
   }
 
+  donateAmountFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+
+  transformAmount(eventForm: any) {
+    this.realAmount = eventForm.target.value;
+    this.formattedAmount = this.currencyPipe.transform(eventForm.target.value, '$');
+  }
+
   getOngoingHelpRequestByUuid() {
     this.fundRequestClient.getOngoingHelpRequestByUuid(this.helpRequestUuid).subscribe((response: any) => {
+      return this.helpRequestDto = response.data;
+    }), (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  }
+
+  saveDonation(donationDto: DonateRequestDto) {
+    this.fundRequestClient.saveDonation(donationDto).subscribe((response: any) => {
+      alert("Donation successfully completed. Thank you.")
       return this.helpRequestDto = response.data;
     }), (error: HttpErrorResponse) => {
       alert(error.message);
@@ -45,11 +71,11 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
           {
             amount: {
               currency_code: 'USD',
-              value: '9.99',
+              value: this.realAmount,
               breakdown: {
                 item_total: {
                   currency_code: 'USD',
-                  value: '9.99'
+                  value: this.realAmount
                 }
               }
             },
@@ -60,7 +86,7 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
                 category: 'DIGITAL_GOODS',
                 unit_amount: {
                   currency_code: 'USD',
-                  value: '9.99',
+                  value: this.realAmount,
                 },
               }
             ]
@@ -85,6 +111,9 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
         this.showSuccess = true;
+        this.saveDonation(new DonateRequestDto(this.helpRequestDto.fundRequestScreen.uuid,
+          data.id, data.payer.address?.country_code, data.payer.email_address,
+          data.payer.name?.full_name, data.payer.payer_id, parseFloat(data.purchase_units[0].amount.value), data.status))
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);

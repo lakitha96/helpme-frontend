@@ -43,6 +43,9 @@ import {LandingComponent} from "./landing/landing.component";
 import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
 import {AvatarModule} from "ngx-avatar";
 import {NgxPayPalModule} from "ngx-paypal";
+import {MatCurrencyFormatModule} from "mat-currency-format";
+import { UserDonationHistoryComponent } from './user-donation-history/user-donation-history.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -56,7 +59,8 @@ import {NgxPayPalModule} from "ngx-paypal";
     NavbarComponent,
     FooterComponent,
     LandingComponent,
-    OrganizationRegisterComponent
+    OrganizationRegisterComponent,
+    UserDonationHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,9 @@ import {NgxPayPalModule} from "ngx-paypal";
     NouisliderModule,
     JwBootstrapSwitchNg2Module,
     AvatarModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    MatCurrencyFormatModule,
+    MatTableModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

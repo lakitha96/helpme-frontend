@@ -2,43 +2,53 @@
   <mat-card class="mat-elevation-z13">
     <mat-card-title style="text-align:center;"></mat-card-title>
     <mat-card-header>
-<!--      <div mat-card-avatar class="example-header-image">-->
-<!--        <img mat-card-avatar src="./assets/img/homePage2.jpg"-->
-<!--             alt="Photo of a Shiba Inu">-->
-<!--      </div>-->
+      <!--      <div mat-card-avatar class="example-header-image">-->
+      <!--        <img mat-card-avatar src="./assets/img/homePage2.jpg"-->
+      <!--             alt="Photo of a Shiba Inu">-->
+      <!--      </div>-->
       <mat-card-title>{{helpRequestDto.helpRequestScreen.name}}</mat-card-title>
       <mat-card-subtitle>{{helpRequestDto.helpRequestScreen.description}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{helpRequestDto.helpRequestScreen.affectedAreaImageUrl}}" alt="Photo of a Shiba Inu">
     <div style="display:flex; flex-direction: row;">
-    <mat-card-content class="payment-content">
-      <h5><b>Affected User Description</b></h5>
-      <p>
-        {{helpRequestDto.userScreen.userName}}
-      </p>
-      <p>
-        663/1, Bambalapitiya, Colombo. //todo change
-      </p>
-      <br>
-      <h5><b>Fund Requested Initialized Organization Details</b></h5>
-      <p>
-        {{helpRequestDto.organizationScreen.name}}
-      </p>
-      <p>
-        {{helpRequestDto.organizationScreen.location}}
-      </p>
-    </mat-card-content>
-    <mat-card-content class="payment-content">
-      <h5><b>Affected Location</b></h5>
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-        <agm-marker [latitude]="lat" [longitude]="lng">
-        </agm-marker>
-      </agm-map>
-    </mat-card-content>
+      <mat-card-content class="payment-content">
+        <h5><b>Affected User Description</b></h5>
+        <p>
+          {{helpRequestDto.userScreen.userName}}
+        </p>
+        <p>
+          663/1, Bambalapitiya, Colombo. //todo change
+        </p>
+        <br>
+        <h5><b>Fund Requested Initialized Organization Details</b></h5>
+        <p>
+          {{helpRequestDto.organizationScreen.name}}
+        </p>
+        <p>
+          {{helpRequestDto.organizationScreen.location}}
+        </p>
+        <h3 style="font-weight: bold" class="raised-amount">$ {{helpRequestDto.fundRequestScreen.fundRaisedAmount}} Fund Raised</h3>
+      </mat-card-content>
+      <mat-card-content class="payment-content">
+        <h5><b>Affected Location</b></h5>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+          <agm-marker [latitude]="lat" [longitude]="lng">
+          </agm-marker>
+        </agm-map>
+      </mat-card-content>
     </div>
     <mat-card-content class="payment-content">
-      <h6 class="raised-amount">{{helpRequestDto.fundRequestScreen.fundRaisedAmount}} amount raised.</h6>
-      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      <mat-form-field class="example-full-width" appearance="fill">
+      <input type="text" placeholder="Enter donate amount"
+             mvndrMatCurrencyFormat
+             [allowNegative]="false"
+             matInput [formControl]="donateAmountFormControl"
+             (blur)="transformAmount($event)" [(ngModel)]="formattedAmount"/>
+      <mat-error *ngIf="!donateAmountFormControl.hasError('required')">
+        Please enter valid amount!
+      </mat-error>
+      </mat-form-field>
+      <ngx-paypal *ngIf="!donateAmountFormControl.hasError('required')" [config]="payPalConfig"></ngx-paypal>
     </mat-card-content>
   </mat-card>
 </div>
