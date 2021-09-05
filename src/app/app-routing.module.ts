@@ -10,6 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {OrganizationRegisterComponent} from "./organization-register/organization-register.component";
 import {HasRoleGuard} from "./has-role.guard";
 import {UserDonationHistoryComponent} from "./user-donation-history/user-donation-history.component";
+import {FundRequestComponent} from "./fund-request/fund-request.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'welcomeToHelpMe', pathMatch: 'full'},
@@ -34,6 +35,11 @@ const routes: Routes = [
     component: UserDonationHistoryComponent,
     canActivate: [HasRoleGuard],
     data: {role: ['ROLE_USER', 'ROLE_ORGANIZATION']}
+  },{
+    path: 'fund-request/:uuid',
+    component: FundRequestComponent,
+    canActivate: [HasRoleGuard],
+    data: {role: 'ROLE_ORGANIZATION'}
   },
   {path: '**', redirectTo: 'welcomeToHelpMe', pathMatch: 'full'}
 ];

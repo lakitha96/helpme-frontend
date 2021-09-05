@@ -11,24 +11,24 @@
     </mat-card-header>
     <img mat-card-image src="{{helpRequestDto.helpRequestScreen.affectedAreaImageUrl}}" alt="Photo of a Shiba Inu">
     <div style="display:flex; flex-direction: row;">
-      <mat-card-content class="payment-content">
-        <h5><b>Affected User Description</b></h5>
-        <p>
-          {{helpRequestDto.userScreen.userName}}
-        </p>
-        <p>
-          663/1, Bambalapitiya, Colombo. //todo change
-        </p>
-        <br>
-        <h5><b>Fund Requested Initialized Organization Details</b></h5>
-        <p>
-          {{helpRequestDto.organizationScreen.name}}
-        </p>
-        <p>
-          {{helpRequestDto.organizationScreen.location}}
-        </p>
-        <h3 style="font-weight: bold" class="raised-amount">$ {{helpRequestDto.fundRequestScreen.fundRaisedAmount}} Fund Raised</h3>
-      </mat-card-content>
+<!--      <mat-card-content class="payment-content">-->
+<!--        <h5><b>Affected User Description</b></h5>-->
+<!--        <p>-->
+<!--          {{helpRequestDto.userScreen.userName}}-->
+<!--        </p>-->
+<!--        <p>-->
+<!--          {{address}}-->
+<!--        </p>-->
+<!--        <br>-->
+<!--        <h5><b>Fund Requested Initialized Organization Details</b></h5>-->
+<!--        <p>-->
+<!--          {{helpRequestDto.organizationScreen.name}}-->
+<!--        </p>-->
+<!--        <p>-->
+<!--          {{helpRequestDto.organizationScreen.location}}-->
+<!--        </p>-->
+<!--        <h3 style="font-weight: bold" class="raised-amount">$ {{helpRequestDto.fundRequestScreen.fundRaisedAmount}} Fund Raised</h3>-->
+<!--      </mat-card-content>-->
       <mat-card-content class="payment-content">
         <h5><b>Affected Location</b></h5>
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">

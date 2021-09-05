@@ -32,7 +32,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {AuthService} from './auth/auth.service';
 import {AgmCoreModule} from "@agm/core";
 import {HelpRequestComponent} from './help-request/help-request.component';
-import {MatOptionModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -46,6 +46,9 @@ import {NgxPayPalModule} from "ngx-paypal";
 import {MatCurrencyFormatModule} from "mat-currency-format";
 import { UserDonationHistoryComponent } from './user-donation-history/user-donation-history.component';
 import {MatTableModule} from "@angular/material/table";
+import { AffectedMapComponent } from './affected-map/affected-map.component';
+import { FundRequestComponent } from './fund-request/fund-request.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -60,7 +63,9 @@ import {MatTableModule} from "@angular/material/table";
     FooterComponent,
     LandingComponent,
     OrganizationRegisterComponent,
-    UserDonationHistoryComponent
+    UserDonationHistoryComponent,
+    AffectedMapComponent,
+    FundRequestComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +101,9 @@ import {MatTableModule} from "@angular/material/table";
     AvatarModule,
     NgxPayPalModule,
     MatCurrencyFormatModule,
-    MatTableModule
+    MatTableModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

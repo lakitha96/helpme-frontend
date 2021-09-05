@@ -1,0 +1,48 @@
+<div class="transaction-page">
+  <mat-card class="mat-elevation-z13">
+    <mat-card-title style="text-align:center;"></mat-card-title>
+    <mat-card-header>
+      <!--      <div mat-card-avatar class="example-header-image">-->
+      <!--        <img mat-card-avatar src="./assets/img/homePage2.jpg"-->
+      <!--             alt="Photo of a Shiba Inu">-->
+      <!--      </div>-->
+      <mat-card-title>{{helpRequestDto.helpRequestScreen.name}}</mat-card-title>
+      <mat-card-subtitle>{{helpRequestDto.helpRequestScreen.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{helpRequestDto.helpRequestScreen.affectedAreaImageUrl}}" alt="Photo of a Shiba Inu">
+    <mat-card-content class="payment-content">
+      <h5><b>Affected User Description</b></h5>
+      <p>{{helpRequestDto.userScreen.userName}}</p>
+      <p>{{address}}</p>
+      <br>
+    </mat-card-content>
+    <mat-card-content>
+      <h5><b>Affected Location</b></h5>
+      <div class="custom-map">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
+          <agm-marker [latitude]="lat" [longitude]="lng" [agmFitBounds]="true">
+          </agm-marker>
+        </agm-map>
+      </div>
+    </mat-card-content>
+
+    <br>
+    <div style="display:flex; flex-direction: row;">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <span></span>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <br>
+    <mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+</div>

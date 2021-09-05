@@ -5,7 +5,7 @@
             <h1>HelpMe | Disaster Relief & Fund Raise</h1>
             <h3>We need your support. Together we can make a difference</h3>
             <br />
-            <a [routerLink]="['/user-login']" class="btn btn-outline-neutral btn-round">Sign Up</a>
+            <a [routerLink]="['/user-login']" class="btn btn-outline-neutral btn-round" *ngIf="!isAuthorized()">Sign Up</a>
             <button [routerLink]="['/feed']" type="button" class="btn btn-danger btn-round">Donate Now</button>
         </div>
     </div>
@@ -154,6 +154,12 @@
         </div>
     </div>
 </div> -->
+  <div class="section landing-section">
+    <div class="col-md-5 mr-auto ml-auto">
+      <h2 class="title">People affected areas</h2>
+    </div>
+    <app-affected-map></app-affected-map>
+  </div>
 
     <div class="section landing-section">
         <div class="container">

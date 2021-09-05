@@ -13,6 +13,11 @@ export class HomeFeedClient {
   constructor(private http: HttpClient) {
   }
 
+  public getAllPendingHelpRequests(): Observable<any> {
+    const headers = this.getCustomHeaders();
+    return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request/pending`, {headers});
+  }
+
   public getAllOngoingHelpRequests(): Observable<any> {
     const headers = this.getCustomHeaders();
     return this.http.get<ApiCommonResponse>(`${this.apiServiceUrl}/helps/request/ongoing`, {headers});

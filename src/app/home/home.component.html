@@ -39,6 +39,15 @@
             </mat-card-content>
           </div>
         </mat-card>
+
+        <mat-card class="donation-info" *ngIf="isOrganization()">
+          <div>
+            <mat-card-actions class="action-footer">
+              <button (click)="onSubmitFundRequest(card)" mat-raised-button color="primary" class="donate-button">Raise Fund
+              </button>
+            </mat-card-actions>
+          </div>
+        </mat-card>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

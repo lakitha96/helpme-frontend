@@ -25,6 +25,10 @@ export class FundRequestClient {
     return this.http.post<ApiCommonResponse>(`${this.apiServiceUrl}/fund-requests/donation`, donationRequest, {headers});
   }
 
+  public getAddress(lat: string, lng: string): Observable<any> {
+    return this.http.get<Object>("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyC-nnj4WeNNlKojwS_7oC5OarJH2PwKlio");
+  }
+
   public getCustomHeaders(): any {
     return new HttpHeaders({
       Authorization: "Bearer " + localStorage.getItem("access_token"),

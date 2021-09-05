@@ -30,11 +30,20 @@ export class HomeComponent implements OnInit{
 
   public loadAllPendingHelpRequests() {
     console.log("loadAllPendingHelpRequests");
-    this.feedClient.getAllOngoingHelpRequests().subscribe((response: any) => {
-      this.pendingHelpRequests = response.data;
-    }), (error: HttpErrorResponse) => {
-      alert(error.message);
+    if (this.isOrganization()) {
+      this.feedClient.getAllPendingHelpRequests().subscribe((response: any) => {
+        this.pendingHelpRequests = response.data;
+      }), (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    } else if (this.isUser()) {
+      this.feedClient.getAllOngoingHelpRequests().subscribe((response: any) => {
+        this.pendingHelpRequests = response.data;
+      }), (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
     }
+
   }
 
   ngOnInit(): void {
@@ -51,5 +60,10 @@ export class HomeComponent implements OnInit{
 
   onSubmit(helpRequestDto: PendingHelpRequestDto) {
       this.router.navigate(['/payment', helpRequestDto.helpRequestScreen.uuid]);
+  }
+
+  onSubmitFundRequest(helpRequestDto: PendingHelpRequestDto) {
+    console.log(helpRequestDto);
+    this.router.navigate(['/fund-request', helpRequestDto.helpRequestScreen.uuid]);
   }
 }

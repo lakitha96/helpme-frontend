@@ -21,6 +21,7 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
   private showSuccess: boolean = false;
   public formattedAmount: any;
   private realAmount: any;
+  public address: any;
 
   constructor(private route: ActivatedRoute,
               private fundRequestClient: FundRequestClient,
@@ -42,7 +43,17 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
 
   getOngoingHelpRequestByUuid() {
     this.fundRequestClient.getOngoingHelpRequestByUuid(this.helpRequestUuid).subscribe((response: any) => {
-      return this.helpRequestDto = response.data;
+      this.helpRequestDto = response.data;
+      this.getLocationAddress();
+    }), (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  }
+
+  getLocationAddress() {
+    this.fundRequestClient.getAddress(this.helpRequestDto.helpRequestScreen.locLat, this.helpRequestDto.helpRequestScreen.locLng).subscribe((response: any) => {
+      this.address =  response.plus_code.compound_code;
+      // console.log(response.results.formatted_address)
     }), (error: HttpErrorResponse) => {
       alert(error.message);
     }
