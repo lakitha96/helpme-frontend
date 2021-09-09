@@ -5,6 +5,9 @@ import {FundRequestClient} from "../paypal-tranasaction/fund-request.client";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
+import {NgForm} from "@angular/forms";
+import {CurrencyPipe} from "@angular/common";
+import {FundRequestDto} from "../models/fund_request/fund.request.dto";
 
 @Component({
   selector: 'app-fund-request',
@@ -17,8 +20,14 @@ export class FundRequestComponent extends MapsService implements OnInit {
   public address: any;
   // public markerLat: any;
   // public markerLng: any;
+  donateAmountFormControl: any;
+  formattedAmount: any;
+  private realAmount: any;
+  endDatePicker: any;
 
-  constructor(private fundRequestClient: FundRequestClient, private route: ActivatedRoute) {
+  constructor(private fundRequestClient: FundRequestClient,
+              private route: ActivatedRoute,
+              private currencyPipe: CurrencyPipe) {
     super();
     this.helpRequestUuid = this.route.snapshot.paramMap.get('uuid');
     this.getOngoingHelpRequestByUuid();
@@ -47,4 +56,18 @@ export class FundRequestComponent extends MapsService implements OnInit {
     }
   }
 
+  transformAmount(eventForm: any) {
+    this.realAmount = eventForm.target.value;
+    this.formattedAmount = this.currencyPipe.transform(eventForm.target.value, '$');
+  }
+
+  fundRaiseRequest() {
+    this.fundRequestClient.saveFundRequest(new FundRequestDto(this.helpRequestUuid, this.endDatePicker, parseFloat(this.realAmount))).subscribe((response: any) => {
+      if (response.statusCode == 200) {
+        alert("Fund request successfully raised.")
+      }
+    }), (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  }
 }

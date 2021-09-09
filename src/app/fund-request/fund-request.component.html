@@ -29,20 +29,32 @@
     <br>
     <div style="display:flex; flex-direction: row;">
       <mat-form-field class="example-form-field" appearance="fill">
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a end date"
+               [(ngModel)]="endDatePicker"/>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <span></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <mat-form-field class="example-form-field" appearance="fill">
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input type="text" placeholder="Enter max funding amount"
+               mvndrMatCurrencyFormat
+               [allowNegative]="false"
+               matInput [formControl]="donateAmountFormControl"
+               (blur)="transformAmount($event)" [(ngModel)]="formattedAmount"/>
+        <!--        <mat-error *ngIf="!donateAmountFormControl.hasError('required')">-->
+        <!--          Please enter valid amount!-->
+        <!--        </mat-error>-->
       </mat-form-field>
     </div>
+
     <br>
     <mat-card-content>
-
+      <button (click)="fundRaiseRequest()"
+              mat-raised-button
+              color="primary"
+              class="login-button">
+        Raise Fund
+      </button>
     </mat-card-content>
   </mat-card>
 </div>

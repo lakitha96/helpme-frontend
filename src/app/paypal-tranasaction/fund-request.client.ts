@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {ApiCommonResponse} from "../models/api.common.response";
 import {Injectable} from "@angular/core";
 import {DonateRequestDto} from "../models/payment/donate.request.dto";
+import {FundRequestDto} from "../models/fund_request/fund.request.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,11 @@ export class FundRequestClient {
 
 
   constructor(private http: HttpClient) {
+  }
+
+  public saveFundRequest(fundRequestDTO: FundRequestDto): Observable<any> {
+    const headers = this.getCustomHeaders();
+    return this.http.post<ApiCommonResponse>(`${this.apiServiceUrl}/fund-requests/raise`, fundRequestDTO, {headers});
   }
 
   public getOngoingHelpRequestByUuid(uuid: string): Observable<any> {
