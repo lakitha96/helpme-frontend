@@ -49,6 +49,7 @@ import {MatTableModule} from "@angular/material/table";
 import { AffectedMapComponent } from './affected-map/affected-map.component';
 import { FundRequestComponent } from './fund-request/fund-request.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { PendingOrganizationComponent } from './pending-organization/pending-organization.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     OrganizationRegisterComponent,
     UserDonationHistoryComponent,
     AffectedMapComponent,
-    FundRequestComponent
+    FundRequestComponent,
+    PendingOrganizationComponent
   ],
   imports: [
     BrowserModule,

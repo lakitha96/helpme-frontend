@@ -61,7 +61,6 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
 
   saveDonation(donationDto: DonateRequestDto) {
     this.fundRequestClient.saveDonation(donationDto).subscribe((response: any) => {
-      alert("Donation successfully completed. Thank you.")
       return this.helpRequestDto = response.data;
     }), (error: HttpErrorResponse) => {
       alert(error.message);
@@ -125,12 +124,15 @@ export class PaypalTransactionComponent extends MapsService implements OnInit {
         this.saveDonation(new DonateRequestDto(this.helpRequestDto.fundRequestScreen.uuid,
           data.id, data.payer.address?.country_code, data.payer.email_address,
           data.payer.name?.full_name, data.payer.payer_id, parseFloat(data.purchase_units[0].amount.value), data.status))
+        alert("Donation successfully completed. Thank you.");
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
+        alert("Payment failed please try again.")
       },
       onError: err => {
         console.log('OnError', err);
+        alert("Payment failed please try again.")
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);

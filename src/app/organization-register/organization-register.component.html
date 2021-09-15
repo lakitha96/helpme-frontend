@@ -11,7 +11,7 @@
                 placeholder="Email"
                 required
                 name="email"
-                ngModel
+                ngModel [email]="true"
                 #email="ngModel">
               <mat-error *ngIf="email.invalid">Email is required</mat-error>
               <mat-icon matSuffix>email</mat-icon>
@@ -40,15 +40,16 @@
             <button
               mat-raised-button
               color="primary"
+              [disabled]="loginForm.form.invalid"
               class="login-button">
               Sign In
             </button>
 
-            <button
-              mat-raised-button
-              class="login-button">
-              Login with Google
-            </button>
+<!--            <button-->
+<!--              mat-raised-button-->
+<!--              class="login-button">-->
+<!--              Login with Google-->
+<!--            </button>-->
           </form>
         </mat-card-content>
       </mat-tab>
@@ -76,7 +77,7 @@
                 placeholder="Email"
                 required
                 name="email"
-                ngModel
+                ngModel [email]="true"
                 #email="ngModel">
               <mat-error *ngIf="email.invalid">Email is required</mat-error>
               <mat-icon matSuffix>email</mat-icon>
@@ -132,6 +133,7 @@
             <button
               mat-raised-button
               color="primary"
+              [disabled]="registerForm.form.invalid"
               class="login-button">
               Sign Up
             </button>

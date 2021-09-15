@@ -34,6 +34,7 @@ export class OrganizationRegisterComponent implements OnInit {
         registerForm.controls.password.value))).subscribe(
       (response: any) => {
         this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
+        this.router.navigate(['/pending_organization']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

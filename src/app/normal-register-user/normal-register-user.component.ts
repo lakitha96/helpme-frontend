@@ -30,8 +30,7 @@ export class NormalRegisterUserComponent implements OnInit {
         this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
       },
       (error: HttpErrorResponse) => {
-        //todo handle in better way
-        alert(error.message);
+        alert("Invalid login credentials.");
       }
     );
   }
@@ -44,11 +43,10 @@ export class NormalRegisterUserComponent implements OnInit {
       registerForm.controls.email.value,
       registerForm.controls.password.value)).subscribe(
       (response: any) => {
-          this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
+        this.authService.login(new AuthTokenResponse(response.data.refresh_token, response.data.access_token));
       },
       (error: HttpErrorResponse) => {
-        //todo handle in better way
-        alert(error.message);
+        alert("Registration failed, try again later.");
       }
     );
   }

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocationDto} from "./models/location.dto";
+import {resolve} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,25 @@ export class MapsService {
   initialize(): void {
     if (!navigator.geolocation) {
       console.log('location not supported.')
+      alert("Please allow access for location services to track your current location.")
     }
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       console.log(`lat: ${this.lat}`, `lon: ${this.lng}`)
-    })
+    });
+
     this.watchPosition();
+
+    navigator.permissions.query({name:'geolocation'}).then(function(result) {
+      // Will return ['granted', 'prompt', 'denied']
+      console.log();
+      if (result.state === "denied") {
+        alert("Please allow access for location services to track your current location.");
+      }
+    });
   }
+
 
   watchPosition() {
 
