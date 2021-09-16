@@ -103,4 +103,8 @@ export class NavbarComponent implements OnInit {
   isUserRole() {
     return this.authService.getRole() === 'ROLE_USER';
   }
+
+  isOrganizationRole() {
+    return this.authService.getRole() === 'ROLE_ORGANIZATION';
+  }
 }

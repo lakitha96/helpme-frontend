@@ -63,7 +63,7 @@ export class FundRequestComponent extends MapsService implements OnInit {
 
   fundRaiseRequest() {
     this.fundRequestClient.saveFundRequest(new FundRequestDto(this.helpRequestUuid, this.endDatePicker, parseFloat(this.realAmount))).subscribe((response: any) => {
-      if (response.statusCode == 200) {
+      if (response.statusInfo.includes('OK')) {
         alert("Fund request successfully raised.")
       }
     }), (error: HttpErrorResponse) => {

@@ -1,0 +1,67 @@
+<h4>All fund requests</h4><br>
+<table mat-table [dataSource]="dataSource" class="custom-table">
+
+  <ng-container matColumnDef="fundRequestId">
+    <mat-header-cell *matHeaderCellDef> Fund Request Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fundRequestId}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="helpRequestUsername">
+    <mat-header-cell *matHeaderCellDef> Help Request Username </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.helpRequestUsername}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="contactNumber">
+    <mat-header-cell *matHeaderCellDef> Contact Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.contactNumber}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="totalRaisedAmount">
+    <mat-header-cell *matHeaderCellDef> Total Raised Amount </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.totalRaisedAmount}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="expireDate">
+    <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.expireDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="helpRequestType">
+    <mat-header-cell *matHeaderCellDef> Help Request Type </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.helpType}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="donationDetails">
+    <mat-header-cell *matHeaderCellDef> Donations </mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button mat-raised-button
+              (click)="viewDonations(element.fundRequestId)"
+              color="primary"
+              class="login-button" >View</button>
+    </mat-cell>
+  </ng-container>
+
+  <!--    <div *ngIf="h === 'action'">-->
+  <!--      <td mat-cell *matCellDef="let row">-->
+  <!--        <button mat-raised-button-->
+  <!--                (click)="viewHelpRequest(row[i].donationHistoryDto.fundRequestUuid)"-->
+  <!--                color="primary"-->
+  <!--                class="login-button" >View</button>-->
+  <!--      </td>-->
+  <!--    </div>-->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+
+
+  <!--  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+  <!--  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+</table>

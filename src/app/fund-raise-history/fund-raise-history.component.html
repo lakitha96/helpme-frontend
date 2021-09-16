@@ -1,0 +1,27 @@
+<h4>Fund raised history</h4><br>
+<table mat-table [dataSource]="dataSource" class="custom-table">
+
+  <ng-container matColumnDef="helpRequestId">
+    <mat-header-cell *matHeaderCellDef> Help Request Id</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.helpRequestId}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="username">
+    <mat-header-cell *matHeaderCellDef> Help Request Username</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef> Donate Amount</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="donatedDate">
+    <mat-header-cell *matHeaderCellDef> Donated date</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.donatedDate}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</table>

@@ -50,6 +50,8 @@ import { AffectedMapComponent } from './affected-map/affected-map.component';
 import { FundRequestComponent } from './fund-request/fund-request.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { PendingOrganizationComponent } from './pending-organization/pending-organization.component';
+import { FundRaiseHistoryComponent } from './fund-raise-history/fund-raise-history.component';
+import { FundRequestHistoryComponent } from './fund-request-history/fund-request-history.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { PendingOrganizationComponent } from './pending-organization/pending-org
     UserDonationHistoryComponent,
     AffectedMapComponent,
     FundRequestComponent,
-    PendingOrganizationComponent
+    PendingOrganizationComponent,
+    FundRaiseHistoryComponent,
+    FundRequestHistoryComponent
   ],
   imports: [
     BrowserModule,
