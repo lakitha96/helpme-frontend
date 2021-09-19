@@ -8,7 +8,7 @@ import {Injectable} from "@angular/core";
 })
 export class DonationHistoryClient {
 
-  private apiServiceUrl = 'http://localhost:8081/api';
+  private apiServiceUrl = 'https://api-helpme-webapp.azurewebsites.net/api';
 
 
   constructor(private http: HttpClient) {

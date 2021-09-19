@@ -9,7 +9,7 @@ import {DonateRequestDto} from "../models/payment/donate.request.dto";
 })
 export class MapServiceClient {
 
-  private apiServiceUrl = 'http://localhost:8081/api';
+  private apiServiceUrl = 'https://api-helpme-webapp.azurewebsites.net/api';
 
 
   constructor(private http: HttpClient) {

@@ -7,7 +7,7 @@ import {ApiCommonResponse} from "../models/api.common.response";
   providedIn: 'root'
 })
 export class HomeFeedClient {
-  private apiServiceUrl = 'http://localhost:8081/api';
+  private apiServiceUrl = 'https://api-helpme-webapp.azurewebsites.net/api';
 
 
   constructor(private http: HttpClient) {
