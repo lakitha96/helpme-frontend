@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppRoutingModule } from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AppRoutingModule} from './app-routing.module';
 
-import { NouisliderModule } from 'ng2-nouislider';
-import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
+import {NouisliderModule} from 'ng2-nouislider';
+import {JwBootstrapSwitchNg2Module} from 'jw-bootstrap-switch-ng2';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,7 +19,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatIconModule} from "@angular/material/icon";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {NavComponent} from './nav/nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
@@ -37,21 +37,24 @@ import {MatSelectModule} from "@angular/material/select";
 import {PaypalTransactionComponent} from './paypal-tranasaction/paypal-transaction.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {FooterComponent} from './shared/footer/footer.component';
 import {LandingComponent} from "./landing/landing.component";
-import { OrganizationRegisterComponent } from './organization-register/organization-register.component';
+import {OrganizationRegisterComponent} from './organization-register/organization-register.component';
 import {AvatarModule} from "ngx-avatar";
 import {NgxPayPalModule} from "ngx-paypal";
 import {MatCurrencyFormatModule} from "mat-currency-format";
-import { UserDonationHistoryComponent } from './user-donation-history/user-donation-history.component';
+import {UserDonationHistoryComponent} from './user-donation-history/user-donation-history.component';
 import {MatTableModule} from "@angular/material/table";
-import { AffectedMapComponent } from './affected-map/affected-map.component';
-import { FundRequestComponent } from './fund-request/fund-request.component';
+import {AffectedMapComponent} from './affected-map/affected-map.component';
+import {FundRequestComponent} from './fund-request/fund-request.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import { PendingOrganizationComponent } from './pending-organization/pending-organization.component';
-import { FundRaiseHistoryComponent } from './fund-raise-history/fund-raise-history.component';
-import { FundRequestHistoryComponent } from './fund-request-history/fund-request-history.component';
+import {PendingOrganizationComponent} from './pending-organization/pending-organization.component';
+import {FundRaiseHistoryComponent} from './fund-raise-history/fund-raise-history.component';
+import {FundRequestHistoryComponent} from './fund-request-history/fund-request-history.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {InterceptorService} from "./loader/interceptor.service";
 
 
 @NgModule({
@@ -71,7 +74,7 @@ import { FundRequestHistoryComponent } from './fund-request-history/fund-request
     FundRequestComponent,
     PendingOrganizationComponent,
     FundRaiseHistoryComponent,
-    FundRequestHistoryComponent
+    FundRequestHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,9 +112,13 @@ import { FundRequestHistoryComponent } from './fund-request-history/fund-request
     MatCurrencyFormatModule,
     MatTableModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 

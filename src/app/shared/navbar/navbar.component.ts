@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {AuthService} from "../../auth/auth.service";
+import {LoaderService} from "../../loader/loader.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
   isLoggedIn$: boolean;
 
-  constructor(public location: Location, private element: ElementRef, private authService: AuthService) {
+  constructor(public loaderService: LoaderService, public location: Location, private element: ElementRef, private authService: AuthService) {
     this.sidebarVisible = false;
     this.isLoggedIn$ = false;
   }

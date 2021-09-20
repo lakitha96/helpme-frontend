@@ -1,49 +1,65 @@
 <nav class="navbar navbar-expand-lg position-static navbar-background" color-on-scroll="600">
-    <div class="container">
-        <div class="navbar-translate">
-            <a style="color:white" class="navbar-brand" [routerLink]="['/']">HelpMe | Disaster Relief & Fund Raise</a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a style="color:white" [routerLink]="['/user-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>User Login</a>
-              </li>
-            </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" [routerLink]="['/organization-login']" *ngIf="!isAuthorized()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Organization Login</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" [routerLink]="['/help-request']" *ngIf="isAuthorized() && isUserRole()" class="nav-link">Request Help</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" [routerLink]="['/user-donation-history']" *ngIf="isAuthorized() && isUserRole()" class="nav-link">Donation History</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" [routerLink]="['/fund-request-history']" *ngIf="isAuthorized() && isOrganizationRole()" class="nav-link">Fund Request History</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" [routerLink]="['/affected-map']" *ngIf="isAuthorized()" class="nav-link">Affected Area Map</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a style="color:white" (click)="onLogout()" *ngIf="isAuthorized()" class="nav-link">Logout</a>
-            </li>
-          </ul>
-        </div>
+  <div class="container">
+    <div>
+      <img class="logo-mini" src="../../../assets/img/help-me-logo3.png">
     </div>
+    <div class="navbar-translate">
+      <a style="color:white" class="navbar-brand" [routerLink]="['/']">HelpMe | Disaster Relief & Fund Raise</a>
+      <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler"
+              aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+              (click)="sidebarToggle()">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/user-login']" *ngIf="!isAuthorized()" class="nav-link"><i
+            class="nc-icon nc-layout-11"></i>User Login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/organization-login']" *ngIf="!isAuthorized()" class="nav-link"><i
+            class="nc-icon nc-layout-11"></i>Organization Login</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/help-request']" *ngIf="isAuthorized() && isUserRole()"
+             class="nav-link">Request Help</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/user-donation-history']" *ngIf="isAuthorized() && isUserRole()"
+             class="nav-link">Donation History</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/fund-request-history']" *ngIf="isAuthorized() && isOrganizationRole()"
+             class="nav-link">Fund Request History</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" [routerLink]="['/affected-map']" *ngIf="isAuthorized()" class="nav-link">Affected Area
+            Map</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="color:white" (click)="onLogout()" *ngIf="isAuthorized()" class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
+
+<div class="loader-container" *ngIf="loaderService.isLoading | async">
+  <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+  <!--  <mat-spinner style="top: 50%; left: 50%" color="warn" mode="indeterminate"></mat-spinner>-->
+</div>
