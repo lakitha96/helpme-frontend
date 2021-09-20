@@ -6,7 +6,8 @@
       <h3>We need your support. Together we can make a difference</h3>
       <br/>
       <a [routerLink]="['/user-login']" class="btn btn-outline-neutral btn-round" *ngIf="!isAuthorized()">Sign Up</a>
-      <button [routerLink]="['/feed']" type="button" class="btn btn-danger btn-round">Donate Now</button>
+      <button [routerLink]="['/feed']" type="button" class="btn btn-danger btn-round" *ngIf="isAuthorized() && isUserRole()">Donate Now</button>
+      <button [routerLink]="['/feed']" type="button" class="btn btn-danger btn-round" *ngIf="isAuthorized() && isOrganizationRole()">Fundraise Now</button>
     </div>
   </div>
 </div>

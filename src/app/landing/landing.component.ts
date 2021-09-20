@@ -20,4 +20,12 @@ export class LandingComponent implements OnInit {
   isAuthorized() {
     return this.authService.isAuthorized();
   }
+
+  isUserRole() {
+    return this.authService.getRole() === 'ROLE_USER';
+  }
+
+  isOrganizationRole() {
+    return this.authService.getRole() === 'ROLE_ORGANIZATION';
+  }
 }
